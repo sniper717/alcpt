@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&family=Fraunces:ital,wght@0,600;1,600&family=Reem+Kufi:wght@600;700&display=swap" rel="stylesheet">
 <title>حفظ كلمات ALCPT — خطة ٦٠ يوم</title>
 <style>
   :root{
@@ -657,6 +658,74 @@
     .word-grid{ grid-template-columns: 1fr 1fr; }
     .choices{ grid-template-columns: 1fr; }
   }
+
+/* ===== Night-sky skin (glassmorphism + aurora) ===== */
+:root{
+  --bg:#0b1026;--bg-panel:rgba(24,31,70,.62);--bg-panel-2:rgba(40,50,110,.45);--line:rgba(160,175,255,.22);
+  --amber:#ffd479;--amber-dim:rgba(255,212,121,.5);--green:#3ee0c3;--red:#ff8fb1;
+  --text:#eaf0ff;--text-dim:#9aa6d1;--text-faint:#7280b0;--violet:#8b7cff;
+  --surface-1:rgba(255,255,255,.06);--surface-done-a:rgba(62,224,195,.28);--surface-done-b:rgba(62,224,195,.12);
+  --surface-current-a:rgba(255,212,121,.35);--surface-current-b:rgba(255,212,121,.14);
+  --surface-exam-a:rgba(255,143,177,.3);--surface-exam-b:rgba(255,143,177,.12);
+  color-scheme:dark}
+body.light{
+  --bg:#eef0ff;--bg-panel:rgba(255,255,255,.72);--bg-panel-2:rgba(236,238,255,.8);--line:rgba(80,90,170,.22);
+  --amber:#a8660a;--amber-dim:rgba(168,102,10,.5);--green:#0f8f7a;--red:#c43a63;
+  --text:#1c2152;--text-dim:#4a5090;--text-faint:#7b82b5;--violet:#5b4de0;
+  --surface-1:rgba(80,90,170,.07);--surface-done-a:rgba(15,143,122,.22);--surface-done-b:rgba(15,143,122,.1);
+  --surface-current-a:rgba(220,150,30,.3);--surface-current-b:rgba(220,150,30,.12);
+  --surface-exam-a:rgba(196,58,99,.22);--surface-exam-b:rgba(196,58,99,.1);
+  color-scheme:light}
+body{font-family:'Tajawal','Tahoma','Segoe UI',sans-serif;position:relative;
+  background:radial-gradient(120% 80% at 50% 0%,#1b2260 0%,#0b1026 55%,#060919 100%) fixed}
+body.light{background:radial-gradient(120% 80% at 50% 0%,#ffffff 0%,#e4e8ff 55%,#d3d8f7 100%) fixed}
+body::before{content:"";position:fixed;inset:-20%;z-index:0;pointer-events:none;filter:blur(36px);
+  background:radial-gradient(38% 32% at 20% 18%,rgba(139,124,255,.38),transparent),radial-gradient(34% 28% at 82% 8%,rgba(62,224,195,.26),transparent),radial-gradient(40% 36% at 72% 92%,rgba(255,143,177,.2),transparent);
+  animation:skDrift 40s ease-in-out infinite alternate}
+body.light::before{opacity:.45}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.75;animation:skTw 6s ease-in-out infinite alternate;
+  background-image:radial-gradient(1.2px 1.2px at 30px 40px,#fff,transparent),radial-gradient(1px 1px at 120px 90px,#cfd8ff,transparent),radial-gradient(1.6px 1.6px at 200px 160px,#ffe9b0,transparent),radial-gradient(1px 1px at 70px 210px,#fff,transparent),radial-gradient(1.2px 1.2px at 250px 20px,#bfe,transparent);
+  background-size:280px 260px}
+body.light::after{display:none}
+@keyframes skDrift{to{transform:translate3d(4%,3%,0) scale(1.08)}}
+@keyframes skTw{to{opacity:.4}}
+@keyframes skSpin{to{transform:rotate(360deg)}}
+.wrap{position:relative;z-index:1}
+header{position:relative;overflow:hidden;border-bottom:1px solid var(--line);padding-top:26px}
+.sk-orb{position:absolute;inset-inline-end:60px;top:-40px;width:230px;height:230px;opacity:.85;z-index:-1;pointer-events:none}
+.sk-rot{transform-origin:150px 150px;animation:skSpin 14s linear infinite}.sk-r2{animation-duration:26s;animation-direction:reverse}
+.brand-eyebrow{color:var(--violet);letter-spacing:.04em;text-transform:none}
+h1{font-family:'Reem Kufi','Tajawal',sans-serif;font-size:clamp(2rem,7vw,3rem);line-height:1.15;text-shadow:0 0 28px rgba(139,124,255,.6)}
+body.light h1{text-shadow:none}
+.header-stat .num,.exam-result .score{font-family:'Reem Kufi',sans-serif;text-shadow:0 0 26px rgba(255,212,121,.5)}
+body.light .header-stat .num,body.light .exam-result .score{text-shadow:none}
+.runway,.panel,.voice-settings,.daily-quiz-cta{background:var(--bg-panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 40px rgba(5,8,30,.25)}
+.runway-light{border-radius:50%;flex:0 0 38px;height:38px}
+.runway-light.done{border-color:var(--green)}
+.runway-light.current{box-shadow:0 0 18px rgba(255,212,121,.6)}
+.runway-light.exam{border-radius:12px}
+.tabs{border-bottom:0;gap:10px;overflow-x:auto;padding-bottom:4px}
+.tab{border:1px solid var(--line);border-radius:999px;margin:0;padding:9px 18px;white-space:nowrap;background:var(--bg-panel);backdrop-filter:blur(8px)}
+.tab.active{border-color:transparent;color:#2a1a05;font-weight:700;background:linear-gradient(135deg,#ffd479,#ff9f6b);box-shadow:0 6px 22px rgba(255,170,100,.4)}
+body.light .tab.active{color:#fff;background:linear-gradient(135deg,#8b7cff,#5b6cff);box-shadow:0 6px 22px rgba(110,100,255,.4)}
+.period-tab{border-radius:14px;background:var(--bg-panel-2)}
+.period-tab.active{background:rgba(255,212,121,.14);box-shadow:0 0 18px rgba(255,212,121,.25)}
+body.light .period-tab.active{background:rgba(91,77,224,.1)}
+.word-card,.flash-card,.choice{background:var(--bg-panel-2);backdrop-filter:blur(8px);border-radius:16px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.word-card:hover,.flash-card:hover,.choice:hover{transform:translateY(-3px);border-color:var(--amber);box-shadow:0 8px 28px rgba(139,124,255,.32)}
+.word-card .en{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:17px;color:var(--amber)}
+.flash-card .front{font-family:'Fraunces',Georgia,serif;font-style:italic}
+.speak-btn{background:linear-gradient(135deg,#8b7cff,#3ee0c3);border:0;color:#fff;box-shadow:0 0 14px rgba(100,200,255,.45)}
+.speak-btn:hover{color:#fff}
+select,button{border-radius:12px}
+select{background:var(--bg-panel-2);backdrop-filter:blur(6px)}
+button{background:var(--bg-panel-2);backdrop-filter:blur(6px)}
+button.primary{background:linear-gradient(135deg,#ffd479,#ff9f6b);color:#2a1a05;border:0;box-shadow:0 6px 22px rgba(255,170,100,.4)}
+button.primary:hover{background:linear-gradient(135deg,#ffe29e,#ffae80)}
+body.light button.primary{background:linear-gradient(135deg,#8b7cff,#5b6cff);color:#fff;box-shadow:0 6px 22px rgba(110,100,255,.4)}
+.choice.correct{box-shadow:0 0 22px rgba(62,224,195,.4)}
+.type-input{border-radius:14px;background:var(--bg-panel-2)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -664,7 +733,7 @@
 
   <div class="datetime-bar" id="datetimeBar"></div>
 
-  <header>
+  <header><svg class="sk-orb" viewBox="0 0 300 300" aria-hidden="true"><g fill="none" stroke="rgba(180,190,255,.3)"><ellipse cx="150" cy="150" rx="140" ry="52" transform="rotate(-24 150 150)"/><ellipse cx="150" cy="150" rx="105" ry="38" transform="rotate(18 150 150)"/><circle cx="150" cy="150" r="70" stroke-dasharray="2 7"/></g><defs><radialGradient id="skpg" cx=".35" cy=".3"><stop offset="0" stop-color="#fff0c2"/><stop offset="1" stop-color="#e09a3a"/></radialGradient></defs><circle cx="150" cy="150" r="26" fill="url(#skpg)"/><g class="sk-rot"><circle cx="150" cy="80" r="7" fill="#3ee0c3"/></g><g class="sk-rot sk-r2"><circle cx="290" cy="150" r="5" fill="#ff8fb1"/></g></svg>
     <div>
       <div class="brand-eyebrow">ALCPT · خطة حفظ شخصية</div>
       <h1>مدرج الكلمات</h1>
